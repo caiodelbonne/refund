@@ -161,6 +161,7 @@ expenseList.addEventListener("click", function (event) {
   updateTotal();
 });
 
+// limpar o formulario
 function formClear() {
     // limpa elemento e retorna para o input 
   expense.value = "";
