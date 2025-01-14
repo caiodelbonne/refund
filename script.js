@@ -70,6 +70,14 @@ function expenseAdd(newExpense) {
     // adiciona name e cate. na div das informacoes
     expenseInfo.append(expenseName, expenseCategory);
 
+    // cria o icone de remover 
+    const removeIcon = document.createElement("img")
+    removeIcon.classList.add("remove-icon")
+    removeIcon.setAttribute("src","img/remove.svg")
+    removeIcon.setAttribute("alt","remover")
+
+
+
     // adiciona valor da despesa
     const expenseAmount = document.createElement("span")
     expenseAmount.classList.add("expense-amount")
@@ -77,7 +85,7 @@ function expenseAdd(newExpense) {
 
     
     // adc o informacoes no item
-    expenseItem.append(expenseIcon, expenseInfo,expenseAmount);
+    expenseItem.append(expenseIcon, expenseInfo,expenseAmount,removeIcon);
 
 
 
