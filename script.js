@@ -91,11 +91,14 @@ function expenseAdd(newExpense) {
 
     // adc o item na lista ********
     expenseList.append(expenseItem);
+
+    // limpa o form
+    formClear();
+
     // atualizar os totais
     updateTotal();
   } catch (error) {
     alert("Nao foi possivel cadastrar");
-    console.log(error);
   }
 }
 
@@ -138,26 +141,31 @@ function updateTotal() {
     expenseTotal.innerHTML = "";
     // adiciona o simbolo BRL e o total formatado
     expenseTotal.append(sybolBRL, total);
-
-
   } catch (error) {
     alert(" erro ao atualizar");
   }
 }
 
+// evento que cap click de remover na lista
 
-// evento que cap click de remover na lista 
+expenseList.addEventListener("click", function (event) {
+  event.preventDefault();
 
-expenseList.addEventListener("click", function(event) {
-    event.preventDefault()
+  if (event.target.classList.contains("remove-icon")) {
+    // obtem a L I  pai do item clicado
+    const item = event.target.closest(".expense");
 
-    if(event.target.classList.contains("remove-icon")) {
-        // obtem a L I  pai do item clicado
-        const item = event.target.closest(".expense")
+    // remove o elemento clicado
+    item.remove();
+  }
+  updateTotal();
+});
 
-        // remove o elemento clicado 
-        item.remove()
-    }
-    updateTotal()
+function formClear() {
+    // limpa elemento e retorna para o input 
+  expense.value = "";
+  category.value = "";
+  amount.value = "";
 
-})
+  expense.focus()
+}
