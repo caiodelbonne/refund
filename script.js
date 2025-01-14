@@ -7,6 +7,8 @@ const category = document.getElementById("category");
 
 //  elementos da lista
 const expenseList = document.querySelector("ul");
+const expenseQuantity = document.querySelector("aside header p span")
+
 
 amount.oninput = () => {
   // capt entrada e tirando as letras do input com regex
@@ -44,6 +46,7 @@ form.onsubmit = (event) => {
   expenseAdd(newExpense);
 };
 
+// adiciona item na lista 
 function expenseAdd(newExpense) {
   try {
     // cria elemento para adc na lista
@@ -91,9 +94,28 @@ function expenseAdd(newExpense) {
 
     // adc o item na lista ********
     expenseList.append(expenseItem);
+    // atualizar os totais 
+    updateTotal()
 
   } catch (error) {
     alert("Nao foi possivel cadastrar");
     console.log(error);
   }
+}
+
+
+// atualizar totais
+function updateTotal () {
+
+    try {
+
+        // recupera todos os li  da lista 
+        const items = expenseList.children 
+        // atualiza a quantidade da lista 
+        expenseQuantity.textContent = `${items.length} ${items.length >1 ? "despesas" : "despesa"}`
+        
+    }catch (error) {
+
+        alert(" erro ao atualizar")
+    }
 }
