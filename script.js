@@ -70,11 +70,20 @@ function expenseAdd(newExpense) {
     // adiciona name e cate. na div das informacoes
     expenseInfo.append(expenseName, expenseCategory);
 
+    // adiciona valor da despesa
+    const expenseAmount = document.createElement("span")
+    expenseAmount.classList.add("expense-amount")
+    expenseAmount.innerHTML= `<small>R$</small>${newExpense.amount.toUpperCase().replace("R$","")}` 
+
+    
     // adc o informacoes no item
-    expenseItem.append(expenseIcon, expenseInfo);
+    expenseItem.append(expenseIcon, expenseInfo,expenseAmount);
+
+
 
     // adc o item na lista ********
     expenseList.append(expenseItem);
+
   } catch (error) {
     alert("Nao foi possivel cadastrar");
     console.log(error);
